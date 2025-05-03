@@ -1,0 +1,29 @@
+import 'package:flutter/material.dart';
+import 'pages/login_page.dart';
+
+void main() {
+  runApp(ExpenseTrackerApp());
+}
+
+class ExpenseTrackerApp extends StatefulWidget {
+  @override
+  _ExpenseTrackerAppState createState() => _ExpenseTrackerAppState();
+}
+
+class _ExpenseTrackerAppState extends State<ExpenseTrackerApp> {
+  bool _isDarkMode = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Expense Tracker',
+      theme: _isDarkMode ? ThemeData.dark() : ThemeData.light(),
+      home: LoginPage(
+        isDarkMode: _isDarkMode,
+        toggleTheme: () => setState(() {
+          _isDarkMode = !_isDarkMode;
+        }),
+      ),
+    );
+  }
+}
